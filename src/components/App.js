@@ -1,33 +1,35 @@
-import React from 'react'
-import '../styles/App.css';
+import React, { useState } from "react";
+import "../styles/App.css";
 
-import programmingGif from "../assets/programming.gif";
+export default function App() {
+    const [theme,setTheme] = useState("light")
+    const func =()=>{
+                if(theme==="light"){
 
-const GIF = () => {
-  return (
-    <img className='import-image' height={200}/>
-    <img 
-    className='import-image'
-    src={programmingGif}
-    height={200}
-    alt="programming-gif"
-    />
-  )
-}
+                    setTheme("dark")
+                }else{
+                    setTheme("light")
+                }
 
-const App = () => {
-  const randomImage="https://picsum.photos/id/400/200";
+            }
 
-  return (
-    <div id="main">
-      <h1>Add images in 2-different ways.</h1>
-      <GIF />
-      <img className='url-image' />
-      <img 
-    className='url-image'
-    src={randomImage}
-alt ="A random image"
-height={200} />
-    </div>
-  )
+    return (
+        <div className="App" id={theme==="light" ? "light" :"dark"}>
+            <h1>Newton School</h1>
+            <div>
+                <form>
+                    <label>UserName</label>
+                    <input></input>
+                    <label>Password</label>
+                    <input></input>
+                    <button>Login</button>
+                </form>
+            </div>
+            <label> {theme === "light" ? "Light Mode" : "Dark Mode"}</label>
+            <input type="checkbox" id="switch" onChange={func} />
+            <label for="switch" className="label">
+                Toggle
+            </label>
+        </div>
+    );
 }
